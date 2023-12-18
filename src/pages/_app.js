@@ -1,10 +1,10 @@
 import "@/styles/globals.css";
 import Head from "next/head";
-const APP_NAME = "Shahriar's Portfolio";
-const APP_DEFAULT_TITLE = "Shahriar Hasan's Portfolio";
+const APP_NAME = "Nesco Meter";
+const APP_DEFAULT_TITLE = "Nesco's Bill Calculator";
 const APP_TITLE_TEMPLATE = "%s - App";
 const APP_DESCRIPTION =
-  "Shahriar is a frontend developer who has expertise in React, Next, JavaScript and TypeScript. An open source contributor and loves to build things.";
+  "This site will help you to calculate bill of Nesco Meter⚡";
 const Open_Graph = "https://i.ibb.co/kK4TTYq/Screenshot-2023-05-17-131329.png";
 
 export default function App({ Component, pageProps }) {
@@ -14,10 +14,7 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <title>{APP_NAME}</title>
         <meta name="description" content={APP_DESCRIPTION} />
-        <link
-          rel="shortcut icon"
-          href="../../public/AppImages/android/android-launchericon-512-512.png"
-        />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <link
           rel="mask-icon"
           href="../../public/AppImages/ios/144.png"

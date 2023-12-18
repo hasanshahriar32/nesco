@@ -1,8 +1,8 @@
 {
-  "id": "1",
-  "name": "Shahriar Hasan's Portfolio",
-  "short_name": "Shahriar's Portfolio",
-  "description": "Full Stack Developer | Working with React, Next, JavaScript and TypeScript 💻 | Cyber Security Expert 👷‍♂️ | IOT & Robotics Enthusiast ⚡",
+  "id": "2",
+  "name": "Nesco Meter",
+  "short_name": "Nesco's Bill Calculator",
+  "description": "This site will help you to calculate bill of Nesco Meter⚡",
   "theme_color": "#B6B7BA",
   "background_color": "#090E19",
   "icons": [
