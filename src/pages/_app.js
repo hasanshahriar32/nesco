@@ -1,4 +1,6 @@
 import "@/styles/globals.css";
+import { useState, createContext } from "react";
+import AppContext from "@/contexts/AppContext";
 import Head from "next/head";
 const APP_NAME = "Nesco Meter";
 const APP_DEFAULT_TITLE = "Nesco's Bill Calculator";
@@ -8,6 +10,8 @@ const APP_DESCRIPTION =
 const Open_Graph = "https://i.ibb.co/kK4TTYq/Screenshot-2023-05-17-131329.png";
 
 export default function App({ Component, pageProps }) {
+  const [mainMeterContext, setMainMeterContext] = useState(0);
+
   return (
     <>
       <Head>
@@ -51,7 +55,9 @@ export default function App({ Component, pageProps }) {
           sizes="512x512"
         />
       </Head>
-      <Component {...pageProps} />
+      <AppContext.Provider value={{ mainMeterContext, setMainMeterContext }}>
+        <Component {...pageProps} />
+      </AppContext.Provider>
     </>
   );
 }
