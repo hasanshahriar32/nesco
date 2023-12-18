@@ -18,9 +18,9 @@ export default function App({ Component, pageProps }) {
         <link
           rel="mask-icon"
           href="../../public/AppImages/ios/144.png"
-          color="#FFFFFF"
+          color="#000000"
         />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#000000" />
         <link
           rel="apple-touch-icon"
           href="../../public/AppImages/android/android-launchericon-512-512.png"
