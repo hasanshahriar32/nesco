@@ -7,8 +7,18 @@ import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-
+import { useContext, useState, useEffect } from "react";
+import AppContext from "@/contexts/AppContext";
+import useRedirect from "@/hooks/useRedirect";
 export function BillDetails() {
+  const mainMeterContext = useContext(AppContext);
+  useEffect(() => {
+    console.log(mainMeterContext);
+    if (mainMeterContext?.mainMeterContext?.length === 0) {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useRedirect("/bill");
+    }
+  }, [mainMeterContext]);
   return (
     <main className="container mx-auto p-6">
       <form className="mb-24 space-y-8 max-w-2xl mx-auto">
@@ -54,7 +64,7 @@ export function BillDetails() {
             <h2 className="text-2xl font-bold">Second Float Inputs</h2>
           </CardHeader>
           <CardContent className="flex flex-col md:flex-row gap-4">
-            <div  className="w-full md:w-1/2">
+            <div className="w-full md:w-1/2">
               <div className="w-full ">
                 <Label htmlFor="float3">Third Float</Label>
                 <Input
@@ -76,7 +86,7 @@ export function BillDetails() {
                 />
               </div>
             </div>
-            <div  className="w-full md:w-1/2">
+            <div className="w-full md:w-1/2">
               <div className="w-full">
                 <Label htmlFor="float3">Third Float</Label>
                 <Input

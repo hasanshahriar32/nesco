@@ -10,7 +10,7 @@ const APP_DESCRIPTION =
 const Open_Graph = "https://i.ibb.co/BjrS0z2/Screenshot-312.png";
 export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);
-  const [mainMeterContext, setMainMeterContext] = useState(0);
+  const [mainMeterContext, setMainMeterContext] = useState([]);
 
   return (
     <>

@@ -8,9 +8,11 @@ import { Select } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import useRedirect from "@/hooks/useRedirect";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import AppContext from "@/contexts/AppContext";
 
 export function BillForm1() {
+  const mainMeterContext = useContext(AppContext);
   const [selectedMonth, setSelectedMonth] = useState("জানুয়ারি – January");
   const handleMonthChange = (event) => {
     setSelectedMonth(event.target.value);
@@ -21,8 +23,9 @@ export function BillForm1() {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     data.month = selectedMonth;
-    console.log(data);
-    console.log("Form Submitted");
+    mainMeterContext.setMainMeterContext(data);
+    // console.log(data);
+    // console.log("Form Submitted");
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useRedirect("/bill/details");
   };
