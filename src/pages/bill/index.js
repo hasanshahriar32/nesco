@@ -1,9 +1,10 @@
+import MainLayout from "@/Layouts/MainLayout";
 import AppContext from "@/contexts/AppContext";
 import { useContext } from "react";
 export default function Bill() {
   const mainMeterContext = useContext(AppContext);
   return (
-    <div className="mockup-window border overflow-y-auto h-[100vh] border-base-300">
+    <div className="overflow-y-auto h-[100vh] border-base-300">
       <div className="hero flex  justify-center items-center flex-col gap-2 min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -27,11 +28,6 @@ export default function Bill() {
                   placeholder="password"
                   className="input input-bordered"
                 />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
               </div>
             </div>
           </div>
@@ -56,11 +52,6 @@ export default function Bill() {
                   placeholder="password"
                   className="input input-bordered"
                 />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
               </div>
             </div>
           </div>
@@ -71,3 +62,7 @@ export default function Bill() {
     </div>
   );
 }
+
+Bill.getLayout = function getLayout(page) {
+  return <MainLayout>{page}</MainLayout>;
+};

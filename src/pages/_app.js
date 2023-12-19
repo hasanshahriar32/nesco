@@ -7,9 +7,9 @@ const APP_DEFAULT_TITLE = "Nesco's Bill Calculator";
 const APP_TITLE_TEMPLATE = "%s - App";
 const APP_DESCRIPTION =
   "This site will help you to calculate bill of Nesco Meter⚡";
-const Open_Graph = "https://i.ibb.co/kK4TTYq/Screenshot-2023-05-17-131329.png";
-
+const Open_Graph = "https://i.ibb.co/BjrS0z2/Screenshot-312.png";
 export default function App({ Component, pageProps }) {
+  const getLayout = Component.getLayout || ((page) => page);
   const [mainMeterContext, setMainMeterContext] = useState(0);
 
   return (
@@ -34,20 +34,14 @@ export default function App({ Component, pageProps }) {
         <meta name="twitter:url" content="https://nesco.vercel.app/" />
         <meta name="twitter:title" content={APP_NAME} />
         <meta name="twitter:description" content={APP_DESCRIPTION} />
-        <meta
-          name="twitter:image"
-          content="../../public/AppImages/android/android-launchericon-512-512.png"
-        />
+        <meta name="twitter:image" content={Open_Graph} />
         <meta name="twitter:creator" content="@ParadoxBd" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={APP_NAME} />
         <meta property="og:description" content={APP_DESCRIPTION} />
         <meta property="og:site_name" content={APP_NAME} />
         <meta property="og:url" content="https://nesco.vercel.app/" />
-        <meta
-          property="og:image"
-          content="../../public/AppImages/android/android-launchericon-512-512.png"
-        />
+        <meta property="og:image" content={Open_Graph} />
         {/* add the following only if you want to add a startup image for Apple devices. */}
         <link
           rel="apple-touch-startup-image"
@@ -56,7 +50,7 @@ export default function App({ Component, pageProps }) {
         />
       </Head>
       <AppContext.Provider value={{ mainMeterContext, setMainMeterContext }}>
-        <Component {...pageProps} />
+        {getLayout(<Component {...pageProps} />)}
       </AppContext.Provider>
     </>
   );
