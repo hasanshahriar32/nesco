@@ -7,8 +7,7 @@ const ErrorPage = () => {
           <div class="m-auto text-center">
             <div>
               <svg
-                width="631"
-                height="379"
+                className="lg:w-[631px] mx-2 lg:h-[379px]"
                 viewBox="0 0 631 379"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
