@@ -1,6 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
@@ -51,6 +52,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Contact />
     </div>
   );
 }
