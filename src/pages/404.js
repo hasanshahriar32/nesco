@@ -1,5 +1,7 @@
 import Contact from "@/components/Contact";
 import Link from "next/link";
+import RedirectHome20 from "@/components/RedirectHome20"
+
 const ErrorPage = () => {
   return (
     <section>
@@ -269,6 +271,7 @@ const ErrorPage = () => {
             <p class="text-sm md:text-base text-yellow-300 p-2 mb-4">
               The stuff you were looking for does not exist
             </p>
+            <RedirectHome20 />
             <Link
               href="/"
               class="bg-transparent hover:text-base-200 hover:bg-yellow-300 text-yellow-300  rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent"
