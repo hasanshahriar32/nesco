@@ -8,10 +8,20 @@ import { Select } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import useRedirect from "@/hooks/useRedirect";
+import { useState } from "react";
 
 export function BillForm1() {
+  const [selectedMonth, setSelectedMonth] = useState("জানুয়ারি – January");
+  const handleMonthChange = (event) => {
+    setSelectedMonth(event.target.value);
+    // console.log(event.target.value);
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    data.month = selectedMonth;
+    console.log(data);
     console.log("Form Submitted");
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useRedirect("/bill/details");
@@ -19,10 +29,13 @@ export function BillForm1() {
 
   return (
     <main className="container mx-auto p-6">
-      <form className="mb-24 space-y-8 max-w-2xl mx-auto">
+      <form
+        onSubmit={handleSubmit}
+        className="mb-24 space-y-8 max-w-2xl mx-auto"
+      >
         <Card className="p-4 space-y-4">
           <CardHeader>
-            <h1 className="text-2xl font-bold">তারিখ নির্বাচন</h1>
+            <h1 className="text-2xl font-bold">সময়কাল নির্বাচন</h1>
           </CardHeader>
           <CardContent className="flex flex-col md:flex-row gap-4">
             <div className="w-full md:w-1/2">
@@ -30,11 +43,11 @@ export function BillForm1() {
               <select
                 required={true}
                 className="select select-bordered w-full max-w-xs"
+                value={selectedMonth}
+                onChange={handleMonthChange}
               >
-                <option disabled selected>
-                  বিলিং মাস নির্বাচন করুন
-                </option>
-                <option>জানুয়ারি – January </option>
+                <option disabled>বিলিং মাস নির্বাচন করুন</option>
+                <option defaultValue>জানুয়ারি – January </option>
                 <option>ফেব্রুয়ারী – February </option>
                 <option>মার্চ – March </option>
                 <option>এপ্রিল – April </option>
@@ -53,6 +66,7 @@ export function BillForm1() {
               <Input
                 className="w-full h-12"
                 id="year"
+                name="year"
                 required={true}
                 placeholder="বছর নির্বাচন করুন"
                 type="number"
@@ -70,6 +84,7 @@ export function BillForm1() {
               <Input
                 className="w-full"
                 id="float1"
+                name="mainMeterStart"
                 required={true}
                 placeholder="0.00"
                 step="0.01"
@@ -81,6 +96,7 @@ export function BillForm1() {
               <Input
                 className="w-full"
                 id="float2"
+                name="mainMeterEnd"
                 required={true}
                 placeholder="0.00"
                 step="0.01"
@@ -99,6 +115,7 @@ export function BillForm1() {
               <Input
                 className="w-full"
                 id="float3"
+                name="subMeterStart"
                 required={true}
                 placeholder="0.00"
                 step="0.01"
@@ -110,6 +127,7 @@ export function BillForm1() {
               <Input
                 className="w-full"
                 id="float4"
+                name="subMeterEnd"
                 required={true}
                 placeholder="0.00"
                 step="0.01"
@@ -120,7 +138,6 @@ export function BillForm1() {
         </Card>
         <div className="flex justify-center">
           <Button
-            onClick={handleSubmit}
             className="px-6 py-2 text-white bg-blue-500 rounded hover:bg-blue-600 transition-colors duration-200"
             type="submit"
           >
