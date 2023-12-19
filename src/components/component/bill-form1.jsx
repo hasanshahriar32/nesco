@@ -68,7 +68,7 @@ export function BillForm1() {
                 id="year"
                 name="year"
                 required={true}
-                placeholder="বছর নির্বাচন করুন"
+                placeholder="বছর লিখুন"
                 type="number"
               />
             </div>
