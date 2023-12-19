@@ -27,7 +27,10 @@ export function BillForm1() {
           <CardContent className="flex flex-col md:flex-row gap-4">
             <div className="w-full md:w-1/2">
               <Label htmlFor="month">মাস</Label>
-              <select className="select select-bordered w-full max-w-xs">
+              <select
+                required={true}
+                className="select select-bordered w-full max-w-xs"
+              >
                 <option disabled selected>
                   বিলিং মাস নির্বাচন করুন
                 </option>
@@ -50,6 +53,7 @@ export function BillForm1() {
               <Input
                 className="w-full h-12"
                 id="year"
+                required={true}
                 placeholder="বছর নির্বাচন করুন"
                 type="number"
               />
@@ -66,6 +70,7 @@ export function BillForm1() {
               <Input
                 className="w-full"
                 id="float1"
+                required={true}
                 placeholder="0.00"
                 step="0.01"
                 type="number"
@@ -76,6 +81,7 @@ export function BillForm1() {
               <Input
                 className="w-full"
                 id="float2"
+                required={true}
                 placeholder="0.00"
                 step="0.01"
                 type="number"
@@ -93,6 +99,7 @@ export function BillForm1() {
               <Input
                 className="w-full"
                 id="float3"
+                required={true}
                 placeholder="0.00"
                 step="0.01"
                 type="number"
@@ -103,6 +110,7 @@ export function BillForm1() {
               <Input
                 className="w-full"
                 id="float4"
+                required={true}
                 placeholder="0.00"
                 step="0.01"
                 type="number"
