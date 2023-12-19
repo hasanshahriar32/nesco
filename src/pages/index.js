@@ -31,7 +31,7 @@ export default function Home() {
                       হিসাব করুন
                     </Button>
                   </Link>
-                  <Link href="/history">
+                  <Link href="/bill/history">
                     <Button className="bg-transparent text-white" type="submit">
                       হিস্টোরি
                     </Button>

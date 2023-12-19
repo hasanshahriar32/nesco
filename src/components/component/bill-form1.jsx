@@ -7,8 +7,16 @@ import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import useRedirect from "@/hooks/useRedirect";
 
 export function BillForm1() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Form Submitted");
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useRedirect("/bill/details");
+  };
+
   return (
     <main className="container mx-auto p-6">
       <form className="mb-24 space-y-8 max-w-2xl mx-auto">
@@ -23,8 +31,18 @@ export function BillForm1() {
                 <option disabled selected>
                   Select The Billing Month
                 </option>
-                <option>Han Solo</option>
-                <option>Greedo</option>
+                <option>জানুয়ারি – January </option>
+                <option>ফেব্রুয়ারী – February </option>
+                <option>মার্চ – March </option>
+                <option>এপ্রিল -April </option>
+                <option>মে – May </option>
+                <option>জুন – June </option>
+                <option>জুলাই – July </option>
+                <option>আগষ্ট – August</option>
+                <option>সেপ্টেম্বর -September </option>
+                <option>অক্টোবর – October </option>
+                <option>নভেম্বর – November </option>
+                <option>ডিসেম্বর – December</option>
               </select>
             </div>
             <div className="w-full md:w-1/2">
@@ -94,10 +112,11 @@ export function BillForm1() {
         </Card>
         <div className="flex justify-center">
           <Button
+            onClick={handleSubmit}
             className="px-6 py-2 text-white bg-blue-500 rounded hover:bg-blue-600 transition-colors duration-200"
             type="submit"
           >
-            Submit
+            Next
           </Button>
         </div>
       </form>

@@ -41,7 +41,7 @@ const Footer = () => {
         </svg>
         <span className="btm-nav-label">Calculator</span>
       </button>
-      <button onClick={() => RedirectCall("/history")}>
+      <button onClick={() => RedirectCall("/bill/history")}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5"
