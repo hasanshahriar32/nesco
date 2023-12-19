@@ -1,7 +1,9 @@
+import Contact from "@/components/Contact";
 import Link from "next/link";
 const ErrorPage = () => {
   return (
     <section>
+      <Contact />
       <div class=" text-white">
         <div class="flex h-screen">
           <div class="m-auto text-center">
