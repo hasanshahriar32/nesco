@@ -62,7 +62,7 @@ export function BillForm1() {
           </CardHeader>
           <CardContent className="flex flex-col md:flex-row gap-4">
             <div className="w-full md:w-1/2">
-              <Label htmlFor="float1">মাসের শুরুতে ব্যালেন্স</Label>
+              <Label htmlFor="float1">মাসের শুরুতে ইউনিট</Label>
               <Input
                 className="w-full"
                 id="float1"
@@ -72,7 +72,7 @@ export function BillForm1() {
               />
             </div>
             <div className="w-full md:w-1/2">
-              <Label htmlFor="float2">মাসের শেষে ব্যালেন্স</Label>
+              <Label htmlFor="float2">মাসের শেষে ইউনিট</Label>
               <Input
                 className="w-full"
                 id="float2"
@@ -89,7 +89,7 @@ export function BillForm1() {
           </CardHeader>
           <CardContent className="flex flex-col md:flex-row gap-4">
             <div className="w-full md:w-1/2">
-              <Label htmlFor="float3">মাসের শুরুতে ব্যালেন্স</Label>
+              <Label htmlFor="float3">মাসের শুরুতে ইউনিট</Label>
               <Input
                 className="w-full"
                 id="float3"
@@ -99,7 +99,7 @@ export function BillForm1() {
               />
             </div>
             <div className="w-full md:w-1/2">
-              <Label htmlFor="float4">মাসের শেষে ব্যালেন্স</Label>
+              <Label htmlFor="float4">মাসের শেষে ইউনিট</Label>
               <Input
                 className="w-full"
                 id="float4"
