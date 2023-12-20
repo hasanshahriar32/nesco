@@ -19,9 +19,20 @@ export function BillDetails() {
       useRedirect("/bill");
     }
   }, [mainMeterContext]);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    console.log(data);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useRedirect("/bill/summary");
+  };
   return (
     <main className="container mx-auto p-6">
-      <form className="mb-24 space-y-8 max-w-2xl mx-auto">
+      <form
+        onSubmit={handleSubmit}
+        className="mb-24 space-y-8 max-w-2xl mx-auto"
+      >
         <Card className="p-4 space-y-4">
           <CardHeader>
             <h2 className="text-2xl font-bold">বিদ্যুৎ ব্যবহার</h2>

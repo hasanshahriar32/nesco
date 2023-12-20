@@ -11,11 +11,18 @@ import {
   TableBody,
   Table,
 } from "@/components/ui/table";
+import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
 
 export function BillHistory() {
   return (
     <div className="flex flex-col w-full min-h-screen pb-8">
       <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:gap-8 md:p-10">
+        <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
+              <CardTitle className="text-xl md:text-2xl">
+                হিসাবের ইতিহাস
+              </CardTitle>
+              {/* <UsersIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" /> */}
+        </CardHeader>
         <div>
           <Table>
             <TableHeader>
