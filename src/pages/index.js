@@ -33,18 +33,17 @@ export default function Home() {
                   </Link>
                   <Link href="/bill/history">
                     <Button className="bg-transparent text-white" type="submit">
-                      হিস্টোরি
+                      ইতিহাস
                     </Button>
                   </Link>
                 </form>
                 <p className="text-xs text-zinc-200 dark:text-zinc-100">
-                  আপনার ওয়েব অভিজ্ঞতা পুনরায় সংজ্ঞায়িত করতে প্রস্তুত হোন -{" "}
-                  {""}
+                  নেসকো প্রি-পেইড কাস্টমার পোর্টাল - {""}
                   <Link
                     className="underline underline-offset-2 text-white"
-                    href="https://shahriarhasan.vercel.app"
+                    href="https://prepaid.nesco.gov.bd/index.php"
                   >
-                    যোগাযোগ করুন।
+                    ভিজিট করুন।
                   </Link>
                 </p>
               </div>

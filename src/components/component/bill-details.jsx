@@ -24,11 +24,11 @@ export function BillDetails() {
       <form className="mb-24 space-y-8 max-w-2xl mx-auto">
         <Card className="p-4 space-y-4">
           <CardHeader>
-            <h2 className="text-2xl font-bold">First Float Inputs</h2>
+            <h2 className="text-2xl font-bold">বিদ্যুৎ ব্যবহার</h2>
           </CardHeader>
           <CardContent className="flex flex-col md:flex-row gap-4">
             <div className="w-full md:w-1/2">
-              <Label htmlFor="float1">First Float</Label>
+              <Label htmlFor="float1">ব্যবহৃত বিদ্যুৎ (টাকা)</Label>
               <Input
                 className="w-full"
                 id="float1"
@@ -38,17 +38,7 @@ export function BillDetails() {
               />
             </div>
             <div className="w-full md:w-1/2">
-              <Label htmlFor="float2">Second Float</Label>
-              <Input
-                className="w-full"
-                id="float2"
-                placeholder="0.00"
-                step="0.01"
-                type="number"
-              />
-            </div>
-            <div className="w-full md:w-1/2">
-              <Label htmlFor="float2">Second Float</Label>
+              <Label htmlFor="float2">সর্বমোট ব্যবহার/কর্তন (টাকা)</Label>
               <Input
                 className="w-full"
                 id="float2"
@@ -61,12 +51,12 @@ export function BillDetails() {
         </Card>
         <Card className="p-4 space-y-4">
           <CardHeader>
-            <h2 className="text-2xl font-bold">Second Float Inputs</h2>
+            <h2 className="text-2xl font-bold">ভ্যাট/ অন্যান্য চার্জ</h2>
           </CardHeader>
           <CardContent className="flex flex-col md:flex-row gap-4">
             <div className="w-full md:w-1/2">
               <div className="w-full ">
-                <Label htmlFor="float3">Third Float</Label>
+                <Label htmlFor="float3">মিটার ভাড়া (টাকা)</Label>
                 <Input
                   className="w-full"
                   id="float3"
@@ -76,7 +66,7 @@ export function BillDetails() {
                 />
               </div>
               <div className="w-full">
-                <Label htmlFor="float4">Fourth Float</Label>
+                <Label htmlFor="float4">ডিমান্ড চার্জ (টাকা)</Label>
                 <Input
                   className="w-full"
                   id="float4"
@@ -88,7 +78,7 @@ export function BillDetails() {
             </div>
             <div className="w-full md:w-1/2">
               <div className="w-full">
-                <Label htmlFor="float3">Third Float</Label>
+                <Label htmlFor="float3">ভ্যাট (টাকা)</Label>
                 <Input
                   className="w-full"
                   id="float3"
@@ -98,7 +88,7 @@ export function BillDetails() {
                 />
               </div>
               <div className="w-full">
-                <Label htmlFor="float4">Fourth Float</Label>
+                <Label htmlFor="float4">জরিমানা/ অন্যান্য</Label>
                 <Input
                   className="w-full"
                   id="float4"
@@ -115,7 +105,7 @@ export function BillDetails() {
             className="px-6 py-2 text-white bg-blue-500 rounded hover:bg-blue-600 transition-colors duration-200"
             type="submit"
           >
-            Submit
+            জমা দিন
           </Button>
         </div>
       </form>
