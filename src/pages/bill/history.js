@@ -1,10 +1,10 @@
-import MainLayout from "@/Layouts/MainLayout";
+import MainLayout2 from "@/Layouts/MainLayout2";
 import { BillHistory } from "@/components/BillHistory";
 import { Card } from "@/components/ui/card";
 const Page = () => {
   return (
     <div>
-      <Card >
+      <Card>
         <BillHistory />
       </Card>
     </div>
@@ -13,5 +13,5 @@ const Page = () => {
 
 export default Page;
 Page.getLayout = function getLayout(page) {
-  return <MainLayout>{page}</MainLayout>;
+  return <MainLayout2>{page}</MainLayout2>;
 };

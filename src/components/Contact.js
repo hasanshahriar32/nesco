@@ -8,7 +8,7 @@ const Contact = () => {
           type="text/javascript"
           async
           defer
-          onload="new formsapp('648995c9071d29cfae4ad022', 'sidetab', {'button':{'text':'Contact Me!','color':'#ff9e24'},'align':{'horizontal':'right','vertical':'middle'},'width':'400px','height':'500px'});"
+          onload="new formsapp('648995c9071d29cfae4ad022', 'popover', {'button':{'color':'#ff9e24'},'align':'right'});"
         ></script>
       </Helmet>
     </>

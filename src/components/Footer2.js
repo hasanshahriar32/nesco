@@ -1,7 +1,7 @@
 import useRedirect from "@/hooks/useRedirect";
 import React from "react";
 
-const Footer = () => {
+const Footer2 = () => {
   const RedirectCall = (props) => {
     useRedirect(props);
   };
@@ -24,10 +24,7 @@ const Footer = () => {
         </svg>
         <span className="btm-nav-label hidden md:block">হোম</span>
       </button>
-      <button
-        className="active  text-warning"
-        onClick={() => RedirectCall("/bill")}
-      >
+      <button onClick={() => RedirectCall("/bill")}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5"
@@ -44,7 +41,10 @@ const Footer = () => {
         </svg>
         <span className="btm-nav-label hidden md:block">হিসাব</span>
       </button>
-      <button onClick={() => RedirectCall("/bill/history")}>
+      <button
+        className="active  text-warning"
+        onClick={() => RedirectCall("/bill/history")}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5"
@@ -65,4 +65,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Footer2;
