@@ -23,7 +23,35 @@ export function BillForm1() {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     data.month = selectedMonth;
-    mainMeterContext.setMainMeterContext(data);
+    const mainMeterUnit = data?.mainMeterEnd - data?.mainMeterStart;
+    const subMeterUnit = data?.subMeterEnd - data?.subMeterStart;
+    const meterUnitDifference = mainMeterUnit - subMeterUnit;
+    if (mainMeterUnit < 0) {
+      alert(
+        "একটি ভুল হয়েছে। মেইন মিটারের: মাসের শুরুতে ইউনিট < মাসের শেষে ইউনিট"
+      );
+      return;
+    }
+    if (subMeterUnit < 0) {
+      alert(
+        "একটি ভুল হয়েছে। সাব মিটারের: মাসের শুরুতে ইউনিট < মাসের শেষে ইউনিট"
+      );
+      return;
+    }
+    if (meterUnitDifference < 0) {
+      alert(
+        "একটি ভুল হয়েছে। সাব-মিটারের বিল মেইন-মিটার অপেক্ষা বেশি হতে পারে না।"
+      );
+      return;
+    }
+    const meterData = {
+      mainMeterUnit,
+      subMeterUnit,
+      meterUnitDifference,
+      year: data?.year,
+      month: selectedMonth,
+    };
+    mainMeterContext.setMainMeterContext(meterData);
     // console.log(data);
     // console.log("Form Submitted");
     // eslint-disable-next-line react-hooks/rules-of-hooks

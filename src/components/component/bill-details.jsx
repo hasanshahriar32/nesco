@@ -12,13 +12,32 @@ import AppContext from "@/contexts/AppContext";
 import useRedirect from "@/hooks/useRedirect";
 export function BillDetails() {
   const mainMeterContext = useContext(AppContext);
+  const { mainMeterUnit, meterUnitDifference, month, subMeterUnit, year } =
+    mainMeterContext.mainMeterContext;
   useEffect(() => {
-    console.log(mainMeterContext);
+    // console.log(mainMeterUnit, meterUnitDifference, month, subMeterUnit, year);
     if (mainMeterContext?.mainMeterContext?.length === 0) {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       useRedirect("/bill");
     }
-  }, [mainMeterContext]);
+    if (
+      !mainMeterUnit ||
+      !meterUnitDifference ||
+      !month ||
+      !subMeterUnit ||
+      !year
+    ) {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useRedirect("/bill");
+    }
+  }, [
+    mainMeterContext,
+    mainMeterUnit,
+    meterUnitDifference,
+    month,
+    subMeterUnit,
+    year,
+  ]);
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);

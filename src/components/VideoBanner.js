@@ -71,7 +71,7 @@ const VideoBanner = () => {
                   className="embed-responsive-item absolute top-0 bottom-0 w-full h-full"
                   title="youtube"
                   src="https://www.youtube.com/embed/E3Bx-l1DOws?enablejsapi=1&amp;origin=https%3A%2F%2Fmdbootstrap.com&controls=0&showinfo=0"
-                  allowFullScreen="false"
+                  allowFullScreen={false}
                   data-gtm-yt-inspected-2340190_699="true"
                   id="240632615"
                 ></iframe>
