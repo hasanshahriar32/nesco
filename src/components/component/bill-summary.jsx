@@ -70,17 +70,30 @@ export function BillSummary() {
   return (
     <div className="flex flex-col w-full min-h-screen">
       <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:gap-8 md:p-10">
+        <div className="space-y-2">
+          <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-gray-300 to-slate-700">
+            খরচের বিবরণী
+          </h1>
+          <p className="max-w-[600px] text-zinc-500 md:text-xl dark:text-zinc-400">
+            সময়কাল: {month}, {year}
+          </p>
+        </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
               <CardTitle className="text-sm font-medium">
                 মেইন মিটার ব্যাবহারকারীর খরচ
               </CardTitle>
-              <DollarSignIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+              <div className="flex items-center justify-center gap-1">
+                <UsersIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                <sub className="text-xs text-gray-500 dark:text-gray-400">
+                  1
+                </sub>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                tk- {mainMeterUserBill?.toFixed(2)}
+                tk: {mainMeterUserBill?.toFixed(2)}
               </div>
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 {/* +2.1% from last month */}
@@ -92,11 +105,16 @@ export function BillSummary() {
               <CardTitle className="text-sm font-medium">
                 সাব মিটার ব্যাবহারকারীর খরচ
               </CardTitle>
-              <DollarSignIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+              <div className="flex items-center justify-center gap-1">
+                <UsersIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                <sub className="text-xs text-gray-500 dark:text-gray-400">
+                  2
+                </sub>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                tk- {subMeterUserBill?.toFixed(2)}
+                tk: {subMeterUserBill?.toFixed(2)}
               </div>
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 {/* +10 from last month */}
@@ -110,8 +128,9 @@ export function BillSummary() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                {usageBill}
-                {""} + ভ্যাট ও অন্যান্য চার্জ ({totalAdditionalCharge})
+                tk: {parseInt(usageBill)?.toFixed(2)}
+                {""} + ভ্যাট ও অন্যান্য চার্জ ( tk:{" "}
+                {totalAdditionalCharge?.toFixed(2)})
               </div>
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 {/* -0.5% from last month */}
@@ -126,7 +145,7 @@ export function BillSummary() {
               <PercentIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{finalUnitCost}</div>
+              <div className="text-2xl font-bold">tk: {finalUnitCost}</div>
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 {/* -0.5% from last month */}
               </p>

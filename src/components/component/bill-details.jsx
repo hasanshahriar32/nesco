@@ -61,14 +61,19 @@ export function BillDetails() {
       return;
     }
     const totalAdditionalCharge =
-      demandCharge + meterCharge + otherCharge + vatCharge;
-      // console.log(totalAdditionalCharge)
-      // todo: fix err
-    const perUnitCost = (usageBill + totalAdditionalCharge) / mainMeterUnit;
-    const mainMeterUserBill = perUnitCost * meterUnitDifference;
-    const subMeterUserBill = perUnitCost * subMeterUnit;
+      parseInt(demandCharge) +
+      parseInt(meterCharge) +
+      parseInt(otherCharge) +
+      parseInt(vatCharge);
+    // console.log(totalAdditionalCharge)
+    // todo: fix err
+    const perUnitCost = usageBill / mainMeterUnit;
+    const mainMeterUserBill =
+      perUnitCost * meterUnitDifference + totalAdditionalCharge / 2;
+    const subMeterUserBill =
+      perUnitCost * subMeterUnit + totalAdditionalCharge / 2;
     const realPerUnitCost = totalBill / mainMeterUnit;
-    const finalUnitCost = realPerUnitCost === 0 ? perUnitCost : realPerUnitCost;
+    const finalUnitCost = realPerUnitCost == 0 ? perUnitCost : realPerUnitCost;
     const FinalBillData = {
       totalBill,
       usageBill,
@@ -85,6 +90,17 @@ export function BillDetails() {
     };
     // console.log(FinalBillData);
     mainMeterContext.setMainMeterContext(FinalBillData);
+
+    //save data to local storage with id
+    const id = Date.now();
+    const billData = {
+      id,
+      ...FinalBillData,
+    };
+    const billDataList = JSON.parse(localStorage.getItem("billDataList")) || [];
+    billDataList.push(billData);
+    localStorage.setItem("billDataList", JSON.stringify(billDataList));
+
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useRedirect("/bill/summary");
   };
