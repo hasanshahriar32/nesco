@@ -2,6 +2,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Contact from "@/components/Contact";
+import VideoBanner from "@/components/VideoBanner";
 
 export default function Home() {
   return (
@@ -9,10 +10,10 @@ export default function Home() {
       <div className="mockup-browser-toolbar">
         <div className="input">https://nesco.vercel.app</div>
       </div>
-      <section className="border-t border-base-300 w-full flex items-center overflow-y-auto justify-center min-h-[60vh]  max-h-[95vh] py-12 md:py-24 lg:py-32 xl:py-48 ">
+      <section className="border-t border-base-300 w-full flex  overflow-y-auto justify-center min-h-[60vh]  max-h-[95vh] py-12 md:pb-24 ">
         <div className=" px-4 md:px-6">
           <div className="grid gap-6 items-center">
-            <div className="flex flex-col justify-center space-y-4 text-center">
+            <div className="flex flex-col justify-center space--4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">
                   নেসকোর বিল ক্যালকুলেটর - নেসকো মিটার
@@ -49,6 +50,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+        <VideoBanner />
         </div>
       </section>
       <Contact />
