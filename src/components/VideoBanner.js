@@ -16,9 +16,10 @@ const VideoBanner = () => {
             setPlayerReady(true);
           },
           onStateChange: (event) => {
-            // If the video ends and player is ready, cue the video again
+            // If the video ends and player is ready, rewind to the beginning and disable suggestions
             if (event.data === window.YT.PlayerState.ENDED && playerReady) {
-              event.target.cueVideoById("E3Bx-l1DOws");
+              event.target.seekTo(0);
+              event.target.setOption("rel", 0); // Disable related videos
             }
           },
         },
