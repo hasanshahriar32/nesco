@@ -4,10 +4,69 @@
  */
 
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
-
+import useRedirect from "@/hooks/useRedirect";
 import { BillHistory } from "../BillHistory";
+import { useContext, useEffect } from "react";
+import AppContext from "@/contexts/AppContext";
 
 export function BillSummary() {
+  const mainMeterContext = useContext(AppContext);
+  const {
+    totalBill,
+    usageBill,
+    mainMeterUserBill,
+    subMeterUserBill,
+    totalAdditionalCharge,
+    perUnitCost,
+    finalUnitCost,
+    mainMeterUnit,
+    meterUnitDifference,
+    month,
+    subMeterUnit,
+    year,
+  } = mainMeterContext.mainMeterContext;
+  useEffect(() => {
+    // console.log(mainMeterUnit, meterUnitDifference, month, subMeterUnit, year);
+    if (mainMeterContext?.mainMeterContext?.length === 0) {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useRedirect("/bill");
+    }
+    if (
+      !totalBill ||
+      !usageBill ||
+      !mainMeterUserBill ||
+      !subMeterUserBill ||
+      !totalAdditionalCharge ||
+      !perUnitCost ||
+      !finalUnitCost
+    ) {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useRedirect("/bill/details");
+    } else if (
+      !mainMeterUnit ||
+      !meterUnitDifference ||
+      !month ||
+      !subMeterUnit ||
+      !year
+    ) {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useRedirect("/bill");
+    }
+  }, [
+    mainMeterContext,
+    mainMeterUserBill,
+    subMeterUserBill,
+    totalAdditionalCharge,
+    perUnitCost,
+    finalUnitCost,
+    mainMeterUnit,
+    meterUnitDifference,
+    month,
+    subMeterUnit,
+    year,
+    totalBill,
+    usageBill,
+  ]);
   return (
     <div className="flex flex-col w-full min-h-screen">
       <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:gap-8 md:p-10">
@@ -15,42 +74,61 @@ export function BillSummary() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
               <CardTitle className="text-sm font-medium">
-                Total Loan Amount
+                মেইন মিটার ব্যাবহারকারীর খরচ
               </CardTitle>
               <DollarSignIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">$1,000,000</div>
+              <div className="text-2xl font-bold">
+                tk- {mainMeterUserBill?.toFixed(2)}
+              </div>
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                +2.1% from last month
+                {/* +2.1% from last month */}
               </p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
               <CardTitle className="text-sm font-medium">
-                Active Loans
+                সাব মিটার ব্যাবহারকারীর খরচ
               </CardTitle>
-              <UsersIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+              <DollarSignIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">250</div>
+              <div className="text-2xl font-bold">
+                tk- {subMeterUserBill?.toFixed(2)}
+              </div>
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                +10 from last month
+                {/* +10 from last month */}
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
+              <CardTitle className="text-sm font-medium">মোট বিল</CardTitle>
+              <DollarSignIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">
+                {usageBill}
+                {""} + ভ্যাট ও অন্যান্য চার্জ ({totalAdditionalCharge})
+              </div>
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                {/* -0.5% from last month */}
               </p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
               <CardTitle className="text-sm font-medium">
-                Average Interest Rate
+                ইউনিট প্রতি খরচ
               </CardTitle>
               <PercentIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">5%</div>
+              <div className="text-2xl font-bold">{finalUnitCost}</div>
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                -0.5% from last month
+                {/* -0.5% from last month */}
               </p>
             </CardContent>
           </Card>

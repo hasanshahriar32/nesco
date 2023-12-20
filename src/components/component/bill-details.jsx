@@ -4,7 +4,6 @@
  */
 import { CardHeader, CardContent, Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Select } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useContext, useState, useEffect } from "react";
@@ -42,7 +41,50 @@ export function BillDetails() {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    console.log(data);
+    const {
+      demandCharge,
+      meterCharge,
+      otherCharge,
+      totalBill,
+      usageBill,
+      vatCharge,
+    } = data;
+    // check whether values are positive else return
+    if (
+      demandCharge < 0 ||
+      meterCharge < 0 ||
+      totalBill < 0 ||
+      usageBill < 0 ||
+      vatCharge < 0
+    ) {
+      alert("জরিমানা ব্যাতিত বাকি চার্জসমুহ অবশ্যই ধনাত্মক হতে হবে");
+      return;
+    }
+    const totalAdditionalCharge =
+      demandCharge + meterCharge + otherCharge + vatCharge;
+      // console.log(totalAdditionalCharge)
+      // todo: fix err
+    const perUnitCost = (usageBill + totalAdditionalCharge) / mainMeterUnit;
+    const mainMeterUserBill = perUnitCost * meterUnitDifference;
+    const subMeterUserBill = perUnitCost * subMeterUnit;
+    const realPerUnitCost = totalBill / mainMeterUnit;
+    const finalUnitCost = realPerUnitCost === 0 ? perUnitCost : realPerUnitCost;
+    const FinalBillData = {
+      totalBill,
+      usageBill,
+      mainMeterUserBill,
+      subMeterUserBill,
+      totalAdditionalCharge,
+      perUnitCost,
+      finalUnitCost,
+      mainMeterUnit,
+      meterUnitDifference,
+      month,
+      subMeterUnit,
+      year,
+    };
+    // console.log(FinalBillData);
+    mainMeterContext.setMainMeterContext(FinalBillData);
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useRedirect("/bill/summary");
   };
@@ -61,6 +103,8 @@ export function BillDetails() {
               <Label htmlFor="float1">ব্যবহৃত বিদ্যুৎ (টাকা)</Label>
               <Input
                 className="w-full"
+                required={true}
+                name="usageBill"
                 id="float1"
                 placeholder="0.00"
                 step="0.01"
@@ -72,6 +116,8 @@ export function BillDetails() {
               <Input
                 className="w-full"
                 id="float2"
+                required={true}
+                name="totalBill"
                 placeholder="0.00"
                 step="0.01"
                 type="number"
@@ -90,6 +136,8 @@ export function BillDetails() {
                 <Input
                   className="w-full"
                   id="float3"
+                  required={true}
+                  name="meterCharge"
                   placeholder="0.00"
                   step="0.01"
                   type="number"
@@ -100,6 +148,8 @@ export function BillDetails() {
                 <Input
                   className="w-full"
                   id="float4"
+                  required={true}
+                  name="demandCharge"
                   placeholder="0.00"
                   step="0.01"
                   type="number"
@@ -112,6 +162,8 @@ export function BillDetails() {
                 <Input
                   className="w-full"
                   id="float3"
+                  required={true}
+                  name="vatCharge"
                   placeholder="0.00"
                   step="0.01"
                   type="number"
@@ -122,6 +174,8 @@ export function BillDetails() {
                 <Input
                   className="w-full"
                   id="float4"
+                  required={true}
+                  name="otherCharge"
                   placeholder="0.00"
                   step="0.01"
                   type="number"

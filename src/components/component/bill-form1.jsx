@@ -26,6 +26,15 @@ export function BillForm1() {
     const mainMeterUnit = data?.mainMeterEnd - data?.mainMeterStart;
     const subMeterUnit = data?.subMeterEnd - data?.subMeterStart;
     const meterUnitDifference = mainMeterUnit - subMeterUnit;
+    if (
+      data?.mainMeterStart < 0 ||
+      data?.mainMeterEnd < 0 ||
+      data?.subMeterEnd < 0 ||
+      data?.subMeterStart < 0
+    ) {
+      alert("একটি ভুল হয়েছে। মিটারের ইউনিট ঋণাত্মক হতে পারে না।");
+      return;
+    }
     if (mainMeterUnit < 0) {
       alert(
         "একটি ভুল হয়েছে। মেইন মিটারের: মাসের শুরুতে ইউনিট < মাসের শেষে ইউনিট"
